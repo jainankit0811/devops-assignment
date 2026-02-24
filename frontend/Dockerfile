@@ -4,10 +4,10 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 COPY . .
-RUN npm run build -- --configuration production
+RUN npm run build -- --configuration production && ls -R dist/angular-15-crud
 
 # Stage 2: Serve
 FROM nginx:alpine
