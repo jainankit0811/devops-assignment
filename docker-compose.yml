@@ -17,5 +17,6 @@ services:
     ports:
       - "4200:80"
     depends_on:
+      - frontend
       - backend
     restart: always
