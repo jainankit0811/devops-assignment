@@ -28,14 +28,14 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ankitd002/devops-assignment-2026-backend:latest
+          tags: ankitd002/devops-assignment-backend:latest
 
       - name: Build and push Frontend image
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
           push: true
-          tags: ankitd002/devops-assignment-2026-frontend:latest
+          tags: ankitd002/devops-assignment-frontend:latest
 
   deploy:
     runs-on: ubuntu-latest

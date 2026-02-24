@@ -13,7 +13,7 @@ services:
   backend:
     build: ./backend
     container_name: backend
-    image: ankitd002/devops-assignment-2026-backend:latest
+    image: ankitd002/devops-assignment-backend:latest
     environment:
       - MONGODB_URL=mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:27017/${MONGO_DB}?authSource=admin
       - PORT=8080
@@ -24,7 +24,7 @@ services:
   frontend:
     build: ./frontend
     container_name: frontend
-    image: ankitd002/devops-assignment-2026-frontend:latest
+    image: ankitd002/devops-assignment-frontend:latest
     depends_on:
       - backend
     restart: always
