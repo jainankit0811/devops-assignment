@@ -12,14 +12,7 @@ services:
   frontend:
     build: ./frontend
     container_name: frontend
-    image: ankitd002/devops-assignment-2026-frontend:latest
-    depends_on:
-      - backend
-    restart: always
-
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
+    image: ankitd002/devops-assignment-frontend:latest 
     ports:
       - "4200:80"
     depends_on:
