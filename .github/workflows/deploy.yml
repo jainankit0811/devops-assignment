@@ -26,14 +26,14 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ankitd002/devops-assignment-backend:latest
+          tags: ankitd002/devops-assignment-2026-backend:latest
 
       - name: Build and push Frontend image
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
           push: true
-          tags: ankitd002/devops-assignment-frontend:latest
+          tags: ankitd002/devops-assignment-2026-frontend:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,5 +53,6 @@ jobs:
             cd ~/devops-assignment
             git pull origin main
             docker-compose down
+            export MONGODB_URL=${{ secrets.MONGODB_URL }}
             docker-compose pull
             docker-compose up -d
