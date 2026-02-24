@@ -56,6 +56,6 @@ jobs:
             cd ~/devops-assignment
             git pull origin main
             docker-compose down
-            export MONGODB_URL=${{ secrets.MONGODB_URL }}
+            export MONGO_URI=${{ secrets.MONGO_URI }}
             docker-compose pull
             docker-compose up -d
