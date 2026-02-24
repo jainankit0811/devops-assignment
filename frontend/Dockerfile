@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm install --legacy-peer-deps
 
 COPY . .
-RUN export NODE_OPTIONS=--max-old-space-size=4096 && npm run build -- --configuration production && ls -R dist/angular-15-crud
+RUN  npm run build -- --configuration production 
 
 # Stage 2: Serve
 FROM nginx:alpine
