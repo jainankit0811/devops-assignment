@@ -9,6 +9,7 @@ services:
       - backend/.env
     restart: always
 
+
   frontend:
     build: ./frontend
     container_name: frontend
