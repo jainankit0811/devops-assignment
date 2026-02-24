@@ -1,11 +1,24 @@
 services:
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_DB}
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
   backend:
     build: ./backend
     container_name: backend
     image: ankitd002/devops-assignment-2026-backend:latest
     environment:
-      - MONGODB_URL=${MONGODB_URL}
+      - MONGODB_URL=mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:27017/${MONGO_DB}?authSource=admin
       - PORT=8080
+    depends_on:
+      - mongodb
     restart: always
 
   frontend:
@@ -27,3 +40,6 @@ services:
       - frontend
       - backend
     restart: always
+
+volumes:
+  mongo_data:
